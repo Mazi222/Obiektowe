@@ -1,7 +1,7 @@
 package lab2.kwadrat;
 
 public class Kwadrat {
-    protected double a;
+    private double a;
     public Kwadrat(double _a){
         if(_a<0)
             System.out.println("Bledne dane");

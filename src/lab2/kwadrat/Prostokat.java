@@ -16,7 +16,7 @@ public class Prostokat extends Kwadrat{
         b=_b;
     }
     public boolean isBigger(Prostokat p2){
-        return a*b<p2.a*p2.b;
+        return getA()*b<p2.getA()*p2.b;
     }
 
 }

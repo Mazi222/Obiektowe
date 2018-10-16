@@ -1,4 +1,4 @@
-package lab2.kwadrat;
+package lab2.Zad_2_3_4;
 
 public class Kwadrat {
     private double a;

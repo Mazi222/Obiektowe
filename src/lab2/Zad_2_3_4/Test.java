@@ -9,7 +9,7 @@ public class Test {
         Scanner odczyt = new Scanner(System.in);
         while(!quit){
             System.out.print(
-                    "1.Wczytaj prostokat\n" +
+                            "1.Wczytaj prostokat\n" +
                             "2.Wyswietl wszystkie prostokaty\n" +
                             "3.Oblicz sume pol wszystkich prostokatow\n" +
                             "4.Zakoncz\n"

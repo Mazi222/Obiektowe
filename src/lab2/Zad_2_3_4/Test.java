@@ -15,18 +15,16 @@ public class Test {
                             "4.Zakoncz\n"
             );
             int wybor = odczyt.nextInt();
-            String rest=odczyt.nextLine();
             if(1==wybor)
             {
                 System.out.println("Podaj a,b: ");
                 figury.add(new Prostokat(odczyt.nextDouble(),odczyt.nextDouble()));
-                rest=odczyt.nextLine();
             }
             else if(2==wybor)
             {
                 for(Prostokat it : figury)
                 {
-                    System.out.println("a= "+it.getA()+", b= "+it.getB());
+                    System.out.println("a= " + it.getA() + ", b= " + it.getB());
                 }
             }
             else if(3==wybor)

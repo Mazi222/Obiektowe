@@ -23,18 +23,18 @@ public class Main {
         testB.print();
         testC.print();
 
-        testA.callIncremental();
-        testB.callIncremental();
-        testC.callIncremental();
+        testA.callIncrement();
+        testB.callIncrement();
+        testC.callIncrement();
 
         System.out.println("\nPo dekrementacji i inkrementacji: ");
         testA.print();
         testB.print();
         testC.print();
 
-        testA.callchangeName();
-        testB.callchangeName();
-        testC.callchangeName();
+        testA.callchangeName("TA");
+        testB.callchangeName("TB");
+        testC.callchangeName("TC");
 
         System.out.println("\nPo dekrementacji ,inkrementacji i zmianie nazwy: ");
         testA.print();

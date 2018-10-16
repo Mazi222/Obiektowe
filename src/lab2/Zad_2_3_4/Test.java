@@ -22,9 +22,10 @@ public class Test {
             }
             else if(2==wybor)
             {
+                int i=0;
                 for(Prostokat it : figury)
                 {
-                    System.out.println("a= " + it.getA() + ", b= " + it.getB());
+                    System.out.println("Prostokat nr "+ (++i) + ": a= " + it.getA() + ", b= " + it.getB());
                 }
             }
             else if(3==wybor)

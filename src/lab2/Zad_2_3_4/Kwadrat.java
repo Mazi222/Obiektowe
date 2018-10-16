@@ -4,7 +4,7 @@ public class Kwadrat {
     private double a;
     public Kwadrat(double _a){
         if(_a<0)
-            System.out.println("Bledne dane");
+            System.out.println("Bledne dane"); // Tutaj powinien być wyjątek
         a=_a;
     }
     public double getA(){

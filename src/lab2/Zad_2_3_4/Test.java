@@ -14,7 +14,7 @@ public class Test {
                             "3.Oblicz sume pol wszystkich prostokatow\n" +
                             "4.Zakoncz\n"
             );
-            int wybor = odczyt.nextInt();
+            byte wybor = odczyt.nextByte();
             if(1==wybor)
             {
                 System.out.println("Podaj a,b: ");

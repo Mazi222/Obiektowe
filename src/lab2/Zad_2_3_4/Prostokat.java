@@ -15,8 +15,13 @@ public class Prostokat extends Kwadrat{
     public void setB(double _b){
         b=_b;
     }
+
+    public double area(){
+        return getA()*b;
+    }
+
     public boolean isBigger(Prostokat p2){
-        return getA()*b<p2.getA()*p2.b;
+        return area()<p2.area();
     }
 
 }

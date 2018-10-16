@@ -26,7 +26,7 @@ public class Test {
             {
                 for(Prostokat it : figury)
                 {
-                    System.out.println(it.getA()+","+it.getB());
+                    System.out.println("a= "+it.getA()+", b= "+it.getB());
                 }
             }
             else if(3==wybor)

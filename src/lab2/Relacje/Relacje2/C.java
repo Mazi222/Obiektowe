@@ -1,6 +1,6 @@
-package Relacje.Relacje2;
+package lab2.Relacje.Relacje2;
 
-import Relacje.Relacje1.B;
+import lab2.Relacje.Relacje1.B;
 
 public class C extends B {
     void changeName(){

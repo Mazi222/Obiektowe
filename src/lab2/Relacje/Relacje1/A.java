@@ -1,4 +1,4 @@
-package Relacje.Relacje1;
+package lab2.Relacje.Relacje1;
 
 public class A {
     protected int number;

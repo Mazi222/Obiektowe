@@ -1,6 +1,6 @@
-package Relacje.Relacje1;
+package lab2.Relacje.Relacje1;
 
-import Relacje.Relacje2.*;
+import lab2.Relacje.Relacje2.*;
 
 public class Main {
     public static void main(String [] argv){

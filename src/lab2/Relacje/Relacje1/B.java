@@ -1,4 +1,4 @@
-package Relacje.Relacje1;
+package lab2.Relacje.Relacje1;
 
 public class B extends A {
     protected void decrement(){

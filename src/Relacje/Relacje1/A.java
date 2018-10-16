@@ -10,8 +10,8 @@ public class A {
     public void callDecrement(){
         decrement();
     }
-    public void callchangeName(String _name){
-        changeName(_name);
+    public void callchangeName(){
+        changeName();
     }
     public void callIncremental(){
         increment();
@@ -22,8 +22,11 @@ public class A {
     protected void decrement(){
         number-=1;
     }
-    void changeName(String _name){
-        name=_name;
+    void changeName(){
+        name=name+"AAA";
+    }
+    public void print(){
+        System.out.println(number +", " + name);
     }
 
 }

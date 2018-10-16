@@ -4,8 +4,8 @@ public class B extends A {
     protected void decrement(){
         number-=2;
     }
-    void changeName(String _name){
-        name=_name+"BBB";
+    void changeName(){
+        name=name+"BBB";
     }
     private void increment(){
         number+=2;

@@ -1,9 +1,11 @@
 package lab3.email;
 
-import javax.print.DocFlavor;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+
 import java.util.LinkedList;
 import javax.mail.*;
 import javax.mail.internet.*;
+import java.util.*;
 
 public class EmailMessage {
     private String from;
@@ -25,6 +27,36 @@ public class EmailMessage {
         bcc=_bcc;
     }
 
+    public void sendemail() throws MessagingException, javax.mail.MessagingException {
+        String host="smtp.poczta.onet.pl";
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.poczta.onet.pl");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
+
+        Session mailSession = Session.getDefaultInstance(props, new javax.mail.Authenticator()
+                {
+                    protected PasswordAuthentication getPasswordAuthentication()
+                    {
+                        return new PasswordAuthentication(from,"sagem4");
+                    }
+                }
+                );
+        mailSession.setDebug(true);
+        MimeMessage message = new MimeMessage(mailSession);
+        message.setFrom(new InternetAddress(from));
+        for (int i = 0; i < to.size(); i++)
+        {
+            message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to.get(i)));
+        }
+        message.setSubject(subject);
+        message.setContent(content, "text/plain; charset=ISO-8859-2");
+        Transport.send(message);
+        System.out.println("KONIEC");
+    }
+
     public static Builder builder(){
         return new EmailMessage.Builder();
     }
@@ -32,24 +64,25 @@ public class EmailMessage {
     public static class Builder{
 
         private String from;
-        private LinkedList<String> to;
+        private LinkedList<String> to=new LinkedList();;
         private String subject;
         private String content;
         private String mimeType;
-        private LinkedList<String> cc;
-        private LinkedList<String> bcc;
+        private LinkedList<String> cc=new LinkedList();;
+        private LinkedList<String> bcc=new LinkedList();;
 
-        Builder(){}
+        Builder(){
+        }
         public Builder addfrom(String _from)
         {
-            if(isEmail(_from)==false)
-                //rzucaj wyjatek
+           // if(isEmail(_from)==false)
+                //rzucaj wyjatek TODO
             from=_from;
             return this;
         }
         public Builder addto(String _to)
         {
-            if(isEmail(_to)==false)
+           // if(isEmail(_to)==false)
                 //rzuca wyjatek
             to.add(_to);
             //TODO
@@ -58,13 +91,11 @@ public class EmailMessage {
         public Builder addsubject(String _subject)
         {
             subject=_subject;
-            //TODO
             return this;
         }
         public Builder addcontent(String _content)
         {
             content=_content;
-            //TODO
             return this;
         }
         public Builder addmimeType(String _mimeType)

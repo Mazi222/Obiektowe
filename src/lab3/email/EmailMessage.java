@@ -117,8 +117,8 @@ public class EmailMessage {
             bcc.add(_bcc);
             return this;
         }
-//rs
-        private boolean isEmail(String email)
+
+        private boolean isEmail(String email)       //sprawdzanie czy ciąg znaków jest mailem
         {
             boolean result = true;
             try {

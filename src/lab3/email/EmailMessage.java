@@ -1,7 +1,9 @@
 package lab3.email;
 
+import javax.print.DocFlavor;
 import java.util.LinkedList;
-//import com.sun.mail.smtp;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 public class EmailMessage {
     private String from;
@@ -28,6 +30,7 @@ public class EmailMessage {
     }
 
     public static class Builder{
+
         private String from;
         private LinkedList<String> to;
         private String subject;
@@ -36,17 +39,18 @@ public class EmailMessage {
         private LinkedList<String> cc;
         private LinkedList<String> bcc;
 
-
-        Builder(){
-        }
+        Builder(){}
         public Builder addfrom(String _from)
         {
+            if(isEmail(_from)==false)
+                //rzucaj wyjatek
             from=_from;
-            //TODO
             return this;
         }
         public Builder addto(String _to)
         {
+            if(isEmail(_to)==false)
+                //rzuca wyjatek
             to.add(_to);
             //TODO
             return this;
@@ -63,10 +67,32 @@ public class EmailMessage {
             //TODO
             return this;
         }
-
-        private boolean isEmail(String mail)
+        public Builder addmimeType(String _mimeType)
         {
+            mimeType=_mimeType;
+            return this;
+        }
+        public Builder addcc(String _cc)
+        {
+            cc.add(_cc);
+            return this;
+        }
+        public Builder addbcc(String _bcc)
+        {
+            bcc.add(_bcc);
+            return this;
+        }
 
+        private boolean isEmail(String email)
+        {
+            boolean result = true;
+            try {
+                InternetAddress emailAddr = new InternetAddress(email);
+                emailAddr.validate();
+            } catch (AddressException ex) {
+                result = false;
+            }
+            return result;
         }
         private boolean isall()
         {

@@ -25,36 +25,52 @@ public class EmailMessage {
         mimeType=_mimeType;
         cc=_cc;
         bcc=_bcc;
+
+        if(_subject==null)
+            subject="";
+        if(_content==null)
+            content="";
+        if(_mimeType==null)
+            mimeType="";
+
     }
 
-    public void sendemail() throws MessagingException, javax.mail.MessagingException {
-        String host="smtp.poczta.onet.pl";
+    public void sendemail(String _host,int port) throws javax.mail.MessagingException {
+
+        String host=_host;
+
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.poczta.onet.pl");
-        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.socketFactory.port", port);
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.port", port);
 
         Session mailSession = Session.getDefaultInstance(props, new javax.mail.Authenticator()
                 {
-                    protected PasswordAuthentication getPasswordAuthentication()
-                    {
+                    protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(from,"sagem4");
                     }
                 }
                 );
-        mailSession.setDebug(true);
         MimeMessage message = new MimeMessage(mailSession);
         message.setFrom(new InternetAddress(from));
-        for (int i = 0; i < to.size(); i++)
+        for (int i = 0; i < to.size(); i++)                 //dodawanie adresatów
         {
             message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to.get(i)));
         }
+        for (int i = 0; i < cc.size(); i++)
+        {
+            message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(cc.get(i)));
+        }
+        for (int i = 0; i < bcc.size(); i++)
+        {
+            message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse(bcc.get(i)));
+        }
         message.setSubject(subject);
         message.setContent(content, "text/plain; charset=ISO-8859-2");
+
         Transport.send(message);
-        System.out.println("KONIEC");
     }
 
     public static Builder builder(){
@@ -73,19 +89,16 @@ public class EmailMessage {
 
         Builder(){
         }
-        public Builder addfrom(String _from)
-        {
-           // if(isEmail(_from)==false)
-                //rzucaj wyjatek TODO
+        public Builder addfrom(String _from) throws NotEmail {
+            if(isEmail(_from)==false)
+                throw new NotEmail();
             from=_from;
             return this;
         }
-        public Builder addto(String _to)
-        {
-           // if(isEmail(_to)==false)
-                //rzuca wyjatek
+        public Builder addto(String _to) throws NotEmail {
+            if(isEmail(_to)==false)
+                throw new NotEmail();
             to.add(_to);
-            //TODO
             return this;
         }
         public Builder addsubject(String _subject)
@@ -136,5 +149,11 @@ public class EmailMessage {
             return new EmailMessage(from, to, subject, content, mimeType, cc, bcc);
         }
 
+    }
+}
+
+class NotEmail extends Exception{
+    public NotEmail() {
+        System.out.println("Zly mail");
     }
 }

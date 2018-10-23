@@ -7,14 +7,18 @@ public class Main {
     {
         String to="raf@vp.pl";
         String from="raf@vp.pl";
+        String host="smtp.poczta.onet.pl";
+        int port=465;
+
         try{
-            EmailMessage test= EmailMessage.builder().addfrom("raf@vp.pl").addsubject("Test").addto("raf@vp.pl").addcontent("dsdsds").build();
-            test.sendemail();
+            EmailMessage test= EmailMessage.builder().addfrom(from).addto(to).addsubject("test").addcontent("testowo").build();
+            test.sendemail(host,port);
         }
         catch(MessagingException e){
             e.printStackTrace();
-        } catch (com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException e) {
-            e.printStackTrace();
+        }
+        catch(NotEmail a){
+            System.out.println("Tu powina być obsługa wyjątku");
         }
     }
 

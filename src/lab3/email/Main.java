@@ -17,12 +17,13 @@ public class Main {
         catch(MessagingException e){
             e.printStackTrace();
         }
-        catch(NotEmail a){
+        catch(NotEmail a){                                          //podany ciag nie jest mailem
             System.out.println("Tu powina być obsługa wyjątku");
         }
-        catch(NotEnoughArguments a) {
+        catch(NotEnoughArguments a) {                               //nie podano odbiorcy i/lub nadawcy
             System.out.println("Tu powina być obsługa wyjątku");
         }
     }
 
 }
+//a

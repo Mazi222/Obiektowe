@@ -51,17 +51,14 @@ public class EmailMessage {
                 );
         MimeMessage message = new MimeMessage(mailSession);
         message.setFrom(new InternetAddress(from));
-        for (int i = 0; i < to.size(); ++i)                 //dodawanie adresatów
-        {
-            message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to.get(i)));
+        for (String aTo : to) {
+            message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(aTo));
         }
-        for (int i = 0; i < cc.size(); ++i)
-        {
-            message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(cc.get(i)));
+        for (String aCc : cc) {
+            message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(aCc));
         }
-        for (int i = 0; i < bcc.size(); ++i)
-        {
-            message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse(bcc.get(i)));
+        for (String aBcc : bcc) {
+            message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse(aBcc));
         }
         message.setSubject(subject);
         message.setContent(content, "text/plain; charset=ISO-8859-2");
@@ -76,12 +73,12 @@ public class EmailMessage {
     public static class Builder{
 
         private String from;
-        private LinkedList<String> to=new LinkedList();
+        private LinkedList<String> to= new LinkedList<>();
         private String subject;
         private String content;
         private String mimeType;
-        private LinkedList<String> cc=new LinkedList();
-        private LinkedList<String> bcc=new LinkedList();
+        private LinkedList<String> cc=new LinkedList<>();
+        private LinkedList<String> bcc=new LinkedList<>();
 
         public Builder addfrom(String _from) throws NotEmail {
             if(!isEmail(_from))
@@ -120,7 +117,7 @@ public class EmailMessage {
             bcc.add(_bcc);
             return this;
         }
-
+//rs
         private boolean isEmail(String email)
         {
             boolean result = true;

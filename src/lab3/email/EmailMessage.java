@@ -1,7 +1,5 @@
 package lab3.email;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-
 import java.util.LinkedList;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -35,9 +33,7 @@ public class EmailMessage {
 
     }
 
-    public void sendemail(String _host,int port) throws javax.mail.MessagingException {
-
-        String host=_host;
+    public void sendemail(String host,int port) throws javax.mail.MessagingException {
 
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
@@ -55,15 +51,15 @@ public class EmailMessage {
                 );
         MimeMessage message = new MimeMessage(mailSession);
         message.setFrom(new InternetAddress(from));
-        for (int i = 0; i < to.size(); i++)                 //dodawanie adresatów
+        for (int i = 0; i < to.size(); ++i)                 //dodawanie adresatów
         {
             message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to.get(i)));
         }
-        for (int i = 0; i < cc.size(); i++)
+        for (int i = 0; i < cc.size(); ++i)
         {
             message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(cc.get(i)));
         }
-        for (int i = 0; i < bcc.size(); i++)
+        for (int i = 0; i < bcc.size(); ++i)
         {
             message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse(bcc.get(i)));
         }
@@ -80,23 +76,21 @@ public class EmailMessage {
     public static class Builder{
 
         private String from;
-        private LinkedList<String> to=new LinkedList();;
+        private LinkedList<String> to=new LinkedList();
         private String subject;
         private String content;
         private String mimeType;
-        private LinkedList<String> cc=new LinkedList();;
-        private LinkedList<String> bcc=new LinkedList();;
+        private LinkedList<String> cc=new LinkedList();
+        private LinkedList<String> bcc=new LinkedList();
 
-        Builder(){
-        }
         public Builder addfrom(String _from) throws NotEmail {
-            if(isEmail(_from)==false)
+            if(!isEmail(_from))
                 throw new NotEmail();
             from=_from;
             return this;
         }
         public Builder addto(String _to) throws NotEmail {
-            if(isEmail(_to)==false)
+            if(!isEmail(_to))
                 throw new NotEmail();
             to.add(_to);
             return this;
@@ -140,12 +134,11 @@ public class EmailMessage {
         }
         private boolean isall()
         {
-            if(from!=null && to != null)
-                return true;
-            return false;
+            return from != null && to != null;
         }
-        public EmailMessage build(){
-
+        public EmailMessage build() throws NotEnoughArguments {
+            if(!isall())
+                throw new NotEnoughArguments();
             return new EmailMessage(from, to, subject, content, mimeType, cc, bcc);
         }
 
@@ -157,3 +150,10 @@ class NotEmail extends Exception{
         System.out.println("Zly mail");
     }
 }
+
+class NotEnoughArguments extends Exception{
+    public NotEnoughArguments() {
+        System.out.println("Brak nadawcy i/lub odbiorcy");
+    }
+}
+

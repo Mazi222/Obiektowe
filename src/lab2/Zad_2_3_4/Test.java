@@ -15,35 +15,33 @@ public class Test {
                             "4.Zakoncz\n"
             );
             byte wybor = odczyt.nextByte();
-            if(1==wybor)
+            switch(wybor)
             {
-                System.out.println("Podaj a,b: ");
-                figury.add(new Prostokat(odczyt.nextDouble(),odczyt.nextDouble()));
-            }
-            else if(2==wybor)
-            {
-                int i=0;
-                for(Prostokat it : figury)
-                {
-                    System.out.println("Prostokat nr "+ (++i) + ": a= " + it.getA() + ", b= " + it.getB());
-                }
-            }
-            else if(3==wybor)
-            {
-                double suma=0;
-                for(Prostokat it : figury)
-                {
-                    suma+=it.area();
-                }
-                System.out.println(suma);
-            }
-            else if(4==wybor)
-            {
-                quit=true;
-            }
-            else
-            {
-                System.out.println("Bledne dane");
+                case 1:
+                    System.out.println("Podaj a,b: ");
+                    figury.add(new Prostokat(odczyt.nextDouble(),odczyt.nextDouble()));
+                    break;
+                case 2:
+                    int i=0;
+                    for(Prostokat it : figury)
+                    {
+                        System.out.println("Prostokat nr "+ (++i) + ": a= " + it.getA() + ", b= " + it.getB());
+                    }
+                    break;
+                case 3:
+                    double suma=0;
+                    for(Prostokat it : figury)
+                    {
+                        suma+=it.area();
+                    }
+                    System.out.println(suma);
+                    break;
+                case 4:
+                    quit=true;
+                    break;
+                default:
+                    System.out.println("Bledne dane");
+                    break;
             }
         }
     }

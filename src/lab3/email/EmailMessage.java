@@ -102,7 +102,7 @@ public class EmailMessage {
         }
         public EmailMessage build(){
 
-            return new EmailMessage(from, to, subject, content, mimeType, cc, bcc;)
+            return new EmailMessage(from, to, subject, content, mimeType, cc, bcc);
         }
 
     }

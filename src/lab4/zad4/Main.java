@@ -1,13 +1,45 @@
 package lab4.zad4;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String [] argv)
     {
-        String aa ="0123456789";
-        int [] tab = new int[9];
-        for(int i=0;i<9;++i)
-            tab[i]=i;
-        System.out.println(tab[aa.charAt(2) -48]);
+        byte szyfrowanie =0;
+        byte algorytm = 0;
+        File inputFile = new File(argv[0]);                    //Przygotowanie plików do odczytu i zapisu
+        File outputFile = new File(argv[1]);
 
+        Scanner odczyt = new Scanner(System.in);
+
+        System.out.println("1.Szyfrowanie");                 // Wybór tego czy chcemy plik szyfrować czy deszyfrować
+        System.out.println("2.Deszyfrowanie");
+        String choice = odczyt.nextLine();
+
+        if(choice.equals("1")) szyfrowanie=1;
+        else if(choice.equals("2")) szyfrowanie=2;
+
+        System.out.println("1.ROT11");                 // Wybór algorytmu
+        System.out.println("2.Polibiusz");
+        try {
+            if (choice.equals("1")) {
+                if (szyfrowanie == 1)
+                    Cryptographer.cryptfile(inputFile, outputFile, new ROT11());
+                else if (szyfrowanie == 2)
+                    Cryptographer.decryptfile(inputFile, outputFile, new ROT11());
+            } else if (choice.equals("2")) {
+                if (szyfrowanie == 1)
+                    Cryptographer.cryptfile(inputFile, outputFile, new Polibiusz());
+                else if (szyfrowanie == 2)
+                    Cryptographer.decryptfile(inputFile, outputFile, new Polibiusz());
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

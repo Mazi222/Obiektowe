@@ -10,7 +10,7 @@ public class Polibiusz implements Algorithm{
         for(int i=0;i<25;++i)
         {
             polybiusBoard[i/5][i%5]=letterToTable++;
-            if(letterToTable != 'j') {
+            if(letterToTable == 'j') {
                 ++letterToTable;
             }
         }
@@ -21,9 +21,11 @@ public class Polibiusz implements Algorithm{
     {
         StringBuilder cryptedWordBuilder = new StringBuilder();
         char letterFromWordToCrypt;
+        byte flag;
 
         for(int i=0;i<singleWordToCrypt.length();++i)
         {
+            flag=0;
             letterFromWordToCrypt=singleWordToCrypt.charAt(i);
             letterFromWordToCrypt=Character.toLowerCase(letterFromWordToCrypt);     //zamiana na małą literę
 
@@ -38,8 +40,12 @@ public class Polibiusz implements Algorithm{
                     {
                         cryptedWordBuilder.append(row+1);
                         cryptedWordBuilder.append(col+1);
+                        flag=1;
+                        break;
                     }
                 }
+                if(flag==1)
+                    break;
             }
         }
 
@@ -52,7 +58,7 @@ public class Polibiusz implements Algorithm{
 
         for(int i=0;i<singleWordToDecrypt.length();i+=2)
         {
-            decryptedWordBuilder.append(polybiusBoard[singleWordToDecrypt.charAt(i)-48][singleWordToDecrypt.charAt(i+1)-48]);       // -48 bo uzyskiwana jest wartość chara dla cyfry a dla 0 wynosi ona 48
+            decryptedWordBuilder.append(polybiusBoard[singleWordToDecrypt.charAt(i)-49][singleWordToDecrypt.charAt(i+1)-49]);       // -49 bo uzyskiwana jest wartość chara dla cyfry równej conajmniej 1 a jej wartość wynosi ona 49
         }
 
         return decryptedWordBuilder.toString();

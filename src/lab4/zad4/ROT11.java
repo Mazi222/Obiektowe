@@ -1,7 +1,9 @@
 package lab4.zad4;
 
 public class ROT11 implements Algorithm {
+
     //private static String alfabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKMNIPQRSTUVWXYZ";
+
     private static byte charactershift = 11;
     @Override
     public String crypt(String singleWordToCrypt) {
@@ -13,6 +15,7 @@ public class ROT11 implements Algorithm {
         {
             asciiLetterFromWordToCrypt=singleWordToCrypt.charAt(i);
             asciiLetterFromWordToCrypt+=charactershift;
+
             if (asciiLetterFromWordToCrypt > 122) {                                                 //mała litera zakres przekroczony od góry (zakres 97-122)
                 asciiLetterFromWordToCrypt=asciiLetterFromWordToCrypt-26;
             }

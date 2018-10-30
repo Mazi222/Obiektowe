@@ -1,12 +1,10 @@
 package lab4.zad4;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Main {
+public class CryptoTest {
     public static void main(String [] argv)
     {
         byte szyfrowanie =0;
@@ -25,6 +23,8 @@ public class Main {
 
         System.out.println("1.ROT11");                 // Wybór algorytmu
         System.out.println("2.Polibiusz");
+        choice = odczyt.nextLine();
+
         try {
             if (choice.equals("1")) {
                 if (szyfrowanie == 1)

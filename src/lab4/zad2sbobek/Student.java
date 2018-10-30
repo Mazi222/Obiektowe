@@ -1,4 +1,4 @@
-package lab4.zad2;
+package lab4.zad2sbobek;
 
 import lab1.Pesel.PESEL;
 

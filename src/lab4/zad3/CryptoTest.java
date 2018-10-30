@@ -41,5 +41,9 @@ public class CryptoTest {
         {
             e.printStackTrace();
         }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

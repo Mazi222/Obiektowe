@@ -23,7 +23,6 @@ public class Cryptographer {
             while (odczyt2.hasNext())
             {
                 String s = odczyt2.next();
-                assert outputwrite != null;
                 outputwrite.write(toalgorithm.crypt(s));
                 outputwrite.write(" ");
             }

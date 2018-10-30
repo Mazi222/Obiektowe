@@ -1,4 +1,4 @@
-package lab4.zad4;
+package lab4.zad3;
 
 public class ROT11 implements Algorithm {
 

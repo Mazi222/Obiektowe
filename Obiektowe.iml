@@ -9,5 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" exported="" name="io.indico-3.15.0-jar-with-dependencies" level="project" />
+    <orderEntry type="library" exported="" name="io.indico-3.15.0" level="project" />
   </component>
 </module>

@@ -1,12 +1,9 @@
-package lab5;
+package lab5.Image;
 
 
 import io.indico.Indico;
 import io.indico.api.results.IndicoResult;
-import io.indico.api.results.BatchIndicoResult;
 import io.indico.api.utils.IndicoException;
-
-import java.io.File;
 
 
 public class Photo {

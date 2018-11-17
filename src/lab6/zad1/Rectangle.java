@@ -27,6 +27,8 @@ public class Rectangle extends Shape {
     {
             Graphics2D graphics2D = (Graphics2D)graphics;
             Rectangle2D rectangle2D = new Rectangle2D.Double(width, height, xAxisVal, yAxisVal);
+
+            graphics2D.draw(rectangle2D);
     }
 
     public byte getNumberOfEdges() {

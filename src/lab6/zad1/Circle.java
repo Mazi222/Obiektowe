@@ -23,9 +23,13 @@ public class Circle extends Shape {
     @Override
     public void draw(Graphics graphics)
     {
-        Graphics2D g2d = (Graphics2D)graphics;
+        Graphics2D graphics2D = (Graphics2D)graphics;
         Ellipse2D circle = new Ellipse2D.Double(xAxisVal,yAxisVal,radius,radius);
-        g2d.draw(circle);
+       // GradientPaint gp = new GradientPaint(xAxisVal-radius/2, yAxisVal-radius/2, Color.red,xAxisVal+radius/2, yAxisVal+radius/2, Color.blue, false);
+       // g2d.setPaint(gp);
+
+        graphics2D.fill(circle);
+        graphics2D.draw(circle);
     }
 
     public byte getNumberOfEdges() {

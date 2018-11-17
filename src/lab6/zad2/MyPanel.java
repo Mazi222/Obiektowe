@@ -11,26 +11,26 @@ public class MyPanel extends JPanel implements ActionListener {
     final int WIDTH;
     final int HEIGHT;
 
-    //private JTextField aChange, bChange, cChange, dChange;
-
     Polynomial polynomial;
 
     int from=-5;
     int to=5;
     int scale=5;
 
-    private JTextField aChange= new JTextField(3);
-    private JTextField bChange= new JTextField(3);
-    private JTextField cChange= new JTextField(3);
-    private JTextField dChange= new JTextField(3);
-    private JTextField fromChange = new JTextField(Integer.toString(from),3);
-    private JTextField toChange= new JTextField(Integer.toString(to),3);
-    private JTextField scaleChange= new JTextField(Integer.toString(scale),3);
+    private JTextField aChange= new JTextField();
+    private JTextField bChange= new JTextField();
+    private JTextField cChange= new JTextField();
+    private JTextField dChange= new JTextField();
+    private JTextField fromChange = new JTextField(Integer.toString(from));
+    private JTextField toChange= new JTextField(Integer.toString(to));
+    private JTextField scaleChange= new JTextField(Integer.toString(scale));
 
     MyPanel(final int WIDTH, final int HEIGHT, Polynomial polynomial)
     {
         super();
+
         setLayout(null);
+
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
         this.polynomial = polynomial;
@@ -116,6 +116,7 @@ public class MyPanel extends JPanel implements ActionListener {
         graphics.drawString("FROM:", 10,250);
         graphics.drawString("TO:", 10,300);
         graphics.drawString("SCALE:", 10,350);
+        graphics.drawString("W(x)=Ax^3+Bx^2+Cx+D", 20,HEIGHT-20);
 
     }
 

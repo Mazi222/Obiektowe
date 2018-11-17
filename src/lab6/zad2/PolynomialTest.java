@@ -8,7 +8,7 @@ public class PolynomialTest {
 
         final int WIDTH = 1024;
         final int HEIGHT = 768;
-        Polynomial polynomial = new Polynomial(0,1,3,1);
+        Polynomial polynomial = new Polynomial();
 
         EventQueue.invokeLater(new Runnable() {
         @Override

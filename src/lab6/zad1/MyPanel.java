@@ -10,19 +10,25 @@ public class MyPanel extends JPanel {
 
     ShapeCollection shapeCollection;
 
-    public MyPanel(int xAxisSize, int yAxisSize, ShapeCollection shapeCollection)
+    final int WIDTH, HEIGHT;
+
+    public MyPanel(final int WIDTH, final int HEIGHT, ShapeCollection shapeCollection)
     {
         super();
-        setPreferredSize(new Dimension(xAxisSize,yAxisSize));
+
+        this.WIDTH=WIDTH;
+        this.HEIGHT=HEIGHT;
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
         this.shapeCollection = shapeCollection;
-        repaint();
+
     }
 
     @Override
     public void paint(Graphics graphics)
     {
         graphics.setColor(Color.WHITE);
-        graphics.fillRect(0, 0, 1024, 768);
+        graphics.fillRect(0, 0, WIDTH, HEIGHT);
         LinkedList<Shape> toDraw = shapeCollection.getShapesList();
         for(Shape drawedShape : toDraw)
         {

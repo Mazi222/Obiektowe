@@ -3,11 +3,14 @@ package lab6.zad1;
 import java.awt.*;
 
 public class FrameTest {
+
     public static void main(String [] argv)
     {
+        final int WIDTH = 1024;
+        final int HEIGHT =768;
+
         int x[]={500,600,550};
         int y[]={400,400,300};
-
 
         ShapeCollection collection = new ShapeCollection();
 
@@ -29,7 +32,7 @@ public class FrameTest {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MyFrame(1024, 768, collection);
+                new MyFrame(WIDTH, HEIGHT, collection);
             }
         });
     }

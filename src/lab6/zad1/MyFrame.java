@@ -4,16 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame extends JFrame {
-    public MyFrame(int xAxisSize, int yAxisSize, ShapeCollection collection){
+    public MyFrame(final int WIDTH, final int HEIGHT, ShapeCollection collection){
 
-        super("Hello World");
+        super();
 
-        MyPanel panel = new MyPanel(xAxisSize, yAxisSize, collection);
+        MyPanel panel = new MyPanel(WIDTH, HEIGHT, collection);
         MousePanel mousePanel = new MousePanel(panel);
 
         add(panel);
 
         pack();
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50,50);
 

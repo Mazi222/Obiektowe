@@ -117,6 +117,8 @@ public class MyPanel extends JPanel implements ActionListener {
         graphics.drawString("TO:", 10,300);
         graphics.drawString("SCALE:", 10,350);
         graphics.drawString("W(x)=Ax^3+Bx^2+Cx+D", 20,HEIGHT-20);
+        graphics.drawString("0", WIDTH/2 +10,HEIGHT/2 + 20);
+
 
     }
 

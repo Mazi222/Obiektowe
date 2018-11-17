@@ -17,7 +17,7 @@ public class Polynomial {
     }
 
 
-    public Polynomial(double d,double c,double b,double a)
+    public Polynomial(double a,double b,double c,double d)
     {
         this.a=a;
         this.b=b;

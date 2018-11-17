@@ -11,9 +11,21 @@ public class MyPanel extends JPanel implements ActionListener {
     final int WIDTH;
     final int HEIGHT;
 
-    private JTextField aChange, bChange, cChange, dChange;
+    //private JTextField aChange, bChange, cChange, dChange;
 
     Polynomial polynomial;
+
+    int from=-5;
+    int to=5;
+    int scale=5;
+
+    private JTextField aChange= new JTextField(3);
+    private JTextField bChange= new JTextField(3);
+    private JTextField cChange= new JTextField(3);
+    private JTextField dChange= new JTextField(3);
+    private JTextField fromChange = new JTextField(Integer.toString(from),3);
+    private JTextField toChange= new JTextField(Integer.toString(to),3);
+    private JTextField scaleChange= new JTextField(Integer.toString(scale),3);
 
     MyPanel(final int WIDTH, final int HEIGHT, Polynomial polynomial)
     {
@@ -32,37 +44,13 @@ public class MyPanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics graphics)
     {
-        aChange= new JTextField(Double.toString(polynomial.getA()));
-        bChange= new JTextField(Double.toString(polynomial.getB()));
-        cChange= new JTextField(Double.toString(polynomial.getC()));
-        dChange= new JTextField(Double.toString(polynomial.getD()));
-
-        aChange.setLocation(50,50);
-        bChange.setLocation(50,100);
-        cChange.setLocation(50,150);
-        dChange.setLocation(50,200);
-
-        aChange.addActionListener(this);
-        bChange.addActionListener(this);
-        cChange.addActionListener(this);
-        dChange.addActionListener(this);
-
-        aChange.setBounds(50,50,50,20);
-        bChange.setBounds(50,100,50,20);
-        cChange.setBounds(50,150,50,20);
-        dChange.setBounds(50,200,50,20);
-
-        add(aChange);
-        add(bChange);
-        add(cChange);
-        add(dChange);
-
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
         graphics.setColor(Color.BLACK);
         Graphics2D graphics2D=(Graphics2D)graphics;
 
+        setTextFieldProperties();
         drawPolynomial(graphics2D);
         drawText(graphics);
 
@@ -75,12 +63,9 @@ public class MyPanel extends JPanel implements ActionListener {
         graphics2D.draw(xAxis);
         graphics2D.draw(yAxis);
 
-        int from=-5;
-        int to=5;
-        int scale=5;
         int valueForX;
         int valueForLastX=calculatePolynomianValue(from);
-        for(int x=from+1;x<to;++x)
+        for(int x=from+1;x<=to;++x)
         {
             valueForX=calculatePolynomianValue(x);
             Line2D line2D = new Line2D.Double(x*scale-scale+WIDTH/2,-valueForLastX+HEIGHT/2,x*scale+WIDTH/2,-valueForX+HEIGHT/2);
@@ -93,6 +78,33 @@ public class MyPanel extends JPanel implements ActionListener {
         return (int)(polynomial.getA()*(x*x*x)+polynomial.getB()*(x*x)+polynomial.getC()*(x)+polynomial.getD());
     }
 
+    private void setTextFieldProperties()
+    {
+        aChange.setBounds(60,50,50,20);
+        bChange.setBounds(60,100,50,20);
+        cChange.setBounds(60,150,50,20);
+        dChange.setBounds(60,200,50,20);
+        fromChange.setBounds(60,250,50,20);
+        toChange.setBounds(60,300,50,20);
+        scaleChange.setBounds(60,350,50,20);
+
+        aChange.addActionListener(this);
+        bChange.addActionListener(this);
+        cChange.addActionListener(this);
+        dChange.addActionListener(this);
+        fromChange.addActionListener(this);
+        toChange.addActionListener(this);
+        scaleChange.addActionListener(this);
+
+        add(aChange);
+        add(bChange);
+        add(cChange);
+        add(dChange);
+        add(fromChange);
+        add(toChange);
+        add(scaleChange);
+    }
+
     private void drawText(Graphics graphics)
     {
         graphics.drawString("x", WIDTH - 10, HEIGHT / 2);
@@ -101,6 +113,10 @@ public class MyPanel extends JPanel implements ActionListener {
         graphics.drawString("B:", 10, 100);
         graphics.drawString("C:", 10, 150);
         graphics.drawString("D:", 10,200);
+        graphics.drawString("FROM:", 10,250);
+        graphics.drawString("TO:", 10,300);
+        graphics.drawString("SCALE:", 10,350);
+
     }
 
 
@@ -109,23 +125,31 @@ public class MyPanel extends JPanel implements ActionListener {
         Object source = actionEvent.getSource();
         if(source==aChange)
         {
-            String newAValue=aChange.getText();
-            polynomial.setA(Double.parseDouble(newAValue));
+            polynomial.setA(Double.parseDouble(aChange.getText()));
         }
         else if(source==bChange)
         {
-            String newBValue=bChange.getText();
-            polynomial.setB(Double.parseDouble(newBValue));
+            polynomial.setB(Double.parseDouble(bChange.getText()));
         }
         else if(source==cChange)
         {
-            String newCValue=cChange.getText();
-            polynomial.setC(Double.parseDouble(newCValue));
+            polynomial.setC(Double.parseDouble(cChange.getText()));
         }
         else if(source==dChange)
         {
-            String newDValue=dChange.getText();
-            polynomial.setD(Double.parseDouble(newDValue));
+            polynomial.setD(Double.parseDouble(dChange.getText()));
+        }
+        else if(source==fromChange)
+        {
+            from=Integer.parseInt(fromChange.getText());
+        }
+        else if(source==toChange)
+        {
+            to=Integer.parseInt(toChange.getText());
+        }
+        else if(source==scaleChange)
+        {
+            scale=Integer.parseInt(scaleChange.getText());
         }
         repaint();
     }

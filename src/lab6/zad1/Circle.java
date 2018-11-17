@@ -24,15 +24,31 @@ public class Circle extends Shape {
     public void draw(Graphics graphics)
     {
         Graphics2D graphics2D = (Graphics2D)graphics;
-        Ellipse2D circle = new Ellipse2D.Double(xAxisVal,yAxisVal,radius,radius);
-       // GradientPaint gp = new GradientPaint(xAxisVal-radius/2, yAxisVal-radius/2, Color.red,xAxisVal+radius/2, yAxisVal+radius/2, Color.blue, false);
-       // g2d.setPaint(gp);
 
+        /* radius *2 gdyz jest on traktowany jako średnica */
+        Ellipse2D circle = new Ellipse2D.Double(xAxisVal,yAxisVal,2*radius,2*radius);
+
+        graphics2D.setColor(new Color(0,0,0));
         graphics2D.fill(circle);
         graphics2D.draw(circle);
     }
 
-    public byte getNumberOfEdges() {
+    @Override
+    public byte getNumberOfEdges()
+    {
         return numberOfEdges;
+    }
+
+    @Override
+    public boolean mouseIn(int mouseXAxisVal, int mouseYAxisVal)
+    {
+        return ((mouseXAxisVal-xAxisVal-radius)*(mouseXAxisVal-xAxisVal-radius) + (mouseYAxisVal-yAxisVal-radius)*(mouseYAxisVal-yAxisVal-radius)) <= (radius*radius);
+    }
+
+    @Override
+    public void setNewAxisValues(int xAxisValOfMouse, int yAxisValOfMouse)
+    {
+        this.xAxisVal += xAxisValOfMouse;
+        this.yAxisVal += yAxisValOfMouse;
     }
 }

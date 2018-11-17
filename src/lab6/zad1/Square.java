@@ -24,12 +24,30 @@ public class Square extends Shape {
     public void draw(Graphics graphics)
     {
         Graphics2D graphics2D = (Graphics2D)graphics;
-        Rectangle2D rectangle2D = new Rectangle2D.Double(edgeLength, edgeLength, xAxisVal, yAxisVal);
+        Rectangle2D rectangle2D = new Rectangle2D.Double( xAxisVal, yAxisVal, edgeLength, edgeLength);
 
+
+        graphics2D.setColor(new Color(0,0,0));
         graphics2D.draw(rectangle2D);
     }
 
-    public byte getNumberOfEdges() {
+    @Override
+    public byte getNumberOfEdges()
+    {
         return numberOfEdges;
     }
+
+    @Override
+    public boolean mouseIn(int mouseXAxisVal, int mouseYAxisVal)
+    {
+        return (mouseXAxisVal<= xAxisVal + edgeLength && mouseXAxisVal >= xAxisVal && mouseYAxisVal <= yAxisVal + edgeLength && mouseYAxisVal >= yAxisVal);
+    }
+
+    @Override
+    public void setNewAxisValues(int xAxisValOfMouse, int yAxisValOfMouse)
+    {
+        this.xAxisVal += xAxisValOfMouse;
+        this.yAxisVal += yAxisValOfMouse;
+    }
+
 }

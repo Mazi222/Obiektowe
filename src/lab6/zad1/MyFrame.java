@@ -1,12 +1,11 @@
 package lab6.zad1;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MyFrame extends JFrame {
     public MyFrame(final int WIDTH, final int HEIGHT, ShapeCollection collection){
 
-        super();
+        super("Figury");
 
         MyPanel panel = new MyPanel(WIDTH, HEIGHT, collection);
         MousePanel mousePanel = new MousePanel(panel);

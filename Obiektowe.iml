@@ -11,6 +11,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/lab5" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab5/Image" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab5/Napisy" />
+      <excludeFolder url="file://$MODULE_DIR$/src/lab6/zad1" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />

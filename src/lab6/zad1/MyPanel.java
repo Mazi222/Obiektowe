@@ -9,8 +9,8 @@ import java.util.LinkedList;
 public class MyPanel extends JPanel {
 
     ShapeCollection shapeCollection;
-
-    final int WIDTH, HEIGHT;
+    final int WIDTH;
+    final int HEIGHT;
 
     public MyPanel(final int WIDTH, final int HEIGHT, ShapeCollection shapeCollection)
     {
@@ -18,10 +18,9 @@ public class MyPanel extends JPanel {
 
         this.WIDTH=WIDTH;
         this.HEIGHT=HEIGHT;
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
-
         this.shapeCollection = shapeCollection;
 
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
     }
 
     @Override
@@ -29,6 +28,7 @@ public class MyPanel extends JPanel {
     {
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, WIDTH, HEIGHT);
+
         LinkedList<Shape> toDraw = shapeCollection.getShapesList();
         for(Shape drawedShape : toDraw)
         {

@@ -11,11 +11,13 @@
       <excludeFolder url="file://$MODULE_DIR$/src/lab5" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab5/Image" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab5/Napisy" />
+      <excludeFolder url="file://$MODULE_DIR$/src/lab6" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="io.indico-3.15.0-jar-with-dependencies" level="project" />
     <orderEntry type="library" exported="" name="io.indico-3.15.0" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

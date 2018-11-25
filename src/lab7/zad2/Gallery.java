@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -63,8 +64,19 @@ public class Gallery extends Application {
     }
 
     private String getPathToImages(){
+
         String path = new String();
-        path = "C:\\Users\\Lenovo\\IdeaProjects\\Obiektowe\\src\\lab7\\zad2\\foto";
+
+        DirectoryChooser directory = new DirectoryChooser();
+        File selected = directory.showDialog(stage);
+
+        if(selected == null){
+            path="zdjecia";
+        }
+        else{
+            path = selected.getAbsolutePath();
+        }
+
         return  path;
     }
 

@@ -127,7 +127,7 @@ public class Gallery extends Application {
         }
         catch (Exception e)
         {
-
+            e.printStackTrace();
         }
         return imageView;
     }

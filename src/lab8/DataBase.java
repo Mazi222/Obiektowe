@@ -62,7 +62,6 @@ public class DataBase {
             {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection("jdbc:mysql://mysql.agh.edu.pl/rafalmaz", "rafalmaz", "39hrsexF2WWrpoPf");
-                System.out.println(connection);
                 tries=3;
             }
             catch (SQLException ex)

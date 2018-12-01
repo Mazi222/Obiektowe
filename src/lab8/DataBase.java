@@ -1,9 +1,9 @@
 package lab8;
 
-import javax.swing.plaf.nimbus.State;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataBase {
     private Connection connection = null;
@@ -14,12 +14,12 @@ public class DataBase {
     {
     }
 
-    public List<Book> getData(String query){
+    public ObservableList<Book> getData(String query){
 
         connect();
         statementCreation();
 
-        List<Book> listaKsiazek = new ArrayList<Book>();
+        ObservableList<Book> listaKsiazek = FXCollections.observableArrayList();
         try {
             resultSet = statement.executeQuery(query);
             while(resultSet.next())
@@ -28,11 +28,10 @@ public class DataBase {
             }
         }
         catch (SQLException e) {}
-        finally {
+        finally
+        {
             closeAll();
         }
-
-
         return listaKsiazek;
     }
 
@@ -102,24 +101,30 @@ public class DataBase {
 
     private void closeAll()
     {
-        if(resultSet!=null) {
-            try {
+        if(resultSet!=null)
+        {
+            try
+            {
                 resultSet.close();
             }
             catch (SQLException e) {}
         }
         resultSet = null;
 
-        if(statement!=null) {
-            try {
+        if(statement!=null)
+        {
+            try
+            {
                 statement.close();
             }
             catch (SQLException e) {}
         }
         statement = null;
 
-        if(connection != null) {
-            try {
+        if(connection != null)
+        {
+            try
+            {
                 connection.close();
             }
             catch (SQLException e) {}

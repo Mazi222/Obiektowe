@@ -1,21 +1,31 @@
 package lab8;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.List;
 
 public class Controller {
 
-    private String getAll = "SELECT * FROM books";
     @FXML private TextField textfieldFindByAuthor;
     @FXML private TextField textfieldFindByISBN;
     @FXML private TextField textfieldAddISBN;
     @FXML private TextField textfieldAddTitle;
     @FXML private TextField textfieldAddAuthor;
     @FXML private TextField textfieldAddYear;
-    @FXML private ListView<String> lista;
+
+    @FXML private TableView<Book> tableView;
+    @FXML private TableColumn<Book, String> col1;
+    @FXML private TableColumn<Book, String> col2;
+    @FXML private TableColumn<Book, String> col3;
+    @FXML private TableColumn<Book, String> col4;
+
     private DataBase dataBase = new DataBase();
 
     @FXML
@@ -25,18 +35,20 @@ public class Controller {
     }
     @FXML
     public void bClear(){
-        lista.getItems().clear();
+        tableView.getItems().clear();
     }
 
     @FXML
     public void getBooks()
     {
         bClear();
-        List<Book> list = dataBase.getData(getAll);
-        for(Book le : list)
-        {
-           lista.getItems().add(le.getIsbn()+" "+le.getTitle()+" "+le.getAuthor()+" "+Integer.toString(le.getYear()));
-        }
+        String query = "SELECT * FROM books";
+        ObservableList<Book> list = dataBase.getData(query);
+        col1.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("author"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("year"));
+        tableView.setItems(list);
     }
 
     @FXML
@@ -44,16 +56,17 @@ public class Controller {
     {
         bClear();
         String author = textfieldFindByAuthor.getText();
-        String query = null;
+        String query;
         if(author.contains(" "))
             query = "SELECT * FROM books WHERE author LIKE '"+author+"'";
         else
             query = "SELECT * FROM books WHERE author LIKE '%"+author+"'";
-        List<Book> list = dataBase.getData(query);
-        for(Book le : list)
-        {
-            lista.getItems().add(le.getIsbn()+" "+le.getTitle()+" "+le.getAuthor()+" "+Integer.toString(le.getYear()));
-        }
+        ObservableList<Book> list = dataBase.getData(query);
+        col1.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("author"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("year"));
+        tableView.setItems(list);
     }
 
     @FXML
@@ -62,10 +75,11 @@ public class Controller {
         bClear();
         textfieldFindByISBN.getText();
         String query = "SELECT * FROM books WHERE isbn LIKE '"+textfieldFindByISBN.getText()+"'";
-        List<Book> list = dataBase.getData(query);
-        for(Book le : list)
-        {
-            lista.getItems().add(le.getIsbn()+" "+le.getTitle()+" "+le.getAuthor()+" "+Integer.toString(le.getYear()));
-        }
+        ObservableList<Book> list = dataBase.getData(query);
+        col1.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("author"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("year"));
+        tableView.setItems(list);
     }
 }

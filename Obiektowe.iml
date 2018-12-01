@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/lab5/Image" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab5/Napisy" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab6" />
+      <excludeFolder url="file://$MODULE_DIR$/src/lab7" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />
@@ -19,5 +20,6 @@
     <orderEntry type="library" exported="" name="io.indico-3.15.0-jar-with-dependencies" level="project" />
     <orderEntry type="library" exported="" name="io.indico-3.15.0" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.13" level="project" />
   </component>
 </module>

@@ -1,24 +1,25 @@
 package lab8;
 
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.List;
 
 public class Controller {
 
     @FXML private TextField textfieldFindByAuthor;
     @FXML private TextField textfieldFindByISBN;
+
     @FXML private TextField textfieldAddISBN;
     @FXML private TextField textfieldAddTitle;
     @FXML private TextField textfieldAddAuthor;
     @FXML private TextField textfieldAddYear;
+
+    @FXML private TextField textfieldDeleteByISBN;
+
 
     @FXML private TableView<Book> tableView;
     @FXML private TableColumn<Book, String> col1;
@@ -29,13 +30,21 @@ public class Controller {
     private DataBase dataBase = new DataBase();
 
     @FXML
+    public void bClear(){
+        tableView.getItems().clear();
+    }
+
+    @FXML
     public void addBookWhenButtonIsClick()
     {
         dataBase.addBook(new Book(textfieldAddISBN.getText(),textfieldAddTitle.getText(),textfieldAddAuthor.getText(),Integer.parseInt(textfieldAddYear.getText())));
     }
+
     @FXML
-    public void bClear(){
-        tableView.getItems().clear();
+    public void deleteBookWithSpecISBN()
+    {
+        String query = "DELETE FROM books WHERE isbn ='"+textfieldDeleteByISBN.getText()+"'";
+        dataBase.deleteBook(query);
     }
 
     @FXML

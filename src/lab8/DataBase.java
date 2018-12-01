@@ -49,6 +49,18 @@ public class DataBase {
         closeAll();
     }
 
+    public void deleteBook(String query)
+    {
+        connect();
+        statementCreation();
+
+        try {
+            statement.executeUpdate(query);
+        } catch (SQLException e){}
+
+        closeAll();
+    }
+
     public boolean isConnected()
     {
         return connection != null;

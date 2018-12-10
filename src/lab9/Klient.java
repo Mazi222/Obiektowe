@@ -34,7 +34,7 @@ public class Klient {
     public void sendMessage(String textMessage, Shape shape)
     {
         try {
-            out.writeObject(new Message(textMessage, shape));
+            out.writeObject(new InformationPackage(idUzytkownika,new Message(textMessage, shape)));
         } catch (IOException e) {
             e.printStackTrace();
         }

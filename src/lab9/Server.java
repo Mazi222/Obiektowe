@@ -5,13 +5,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 
-public class Serwer {
+public class Server {
 
-    private List<DaneUzytkownika> daneUzytkownika=null;
+    private List<UserData> userData =null;
     private ServerSocket serverSocket;
     private List<Socket> clientSocket=null;
 
-    Serwer()
+    Server()
     {
         try {
             serverSocket = new ServerSocket(6666);

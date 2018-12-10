@@ -5,15 +5,15 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.List;
 
-public class Klient {
-    private String idUzytkownika;
+public class Client {
+    private String userId;
     private String password;
     private Socket echoSocket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
-    public Klient(String idUzytkownika, String password) {
-        this.idUzytkownika = idUzytkownika;
+    public Client(String userId, String password) {
+        this.userId = userId;
         this.password = password;
         connect();
     }
@@ -34,7 +34,7 @@ public class Klient {
     public void sendMessage(String textMessage, Shape shape)
     {
         try {
-            out.writeObject(new InformationPackage(idUzytkownika,new Message(textMessage, shape)));
+            out.writeObject(new InformationPackage(userId,new Message(textMessage, shape)));
         } catch (IOException e) {
             e.printStackTrace();
         }

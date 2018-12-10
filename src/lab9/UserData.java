@@ -3,15 +3,15 @@ package lab9;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DaneUzytkownika {
-    private String idUzytkownika;
+public class UserData {
+    private String userId;
     private String password;
     private List<Message> listOfMessage;
     private boolean loggedOn; // true jezeli zalogowany
 
-    DaneUzytkownika(String idUzytkownika, String password, Message message)
+    UserData(String userId, String password, Message message)
     {
-        this.idUzytkownika=idUzytkownika;
+        this.userId=userId;
         this.password=password;
         listOfMessage = new LinkedList<>();
         listOfMessage.add(message);
@@ -20,7 +20,7 @@ public class DaneUzytkownika {
 
     String getId()
     {
-        return idUzytkownika;
+        return userId;
     }
     String getPassword()
     {

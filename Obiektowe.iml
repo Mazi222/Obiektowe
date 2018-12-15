@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab1" />
+      <excludeFolder url="file://$MODULE_DIR$/src/lab10" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab2" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab3" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab4" />
@@ -14,6 +15,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/lab6" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab7" />
       <excludeFolder url="file://$MODULE_DIR$/src/lab8" />
+      <excludeFolder url="file://$MODULE_DIR$/src/lab9" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />

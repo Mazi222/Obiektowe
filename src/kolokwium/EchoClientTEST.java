@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /*
+Używana: java 11
 
 Aby klient zadziałał należy najpierw uruchomić serwer a następnie przeprowadzić pozorowaną rozgrywkę w kółko i krzyżyk,
 która zwróci ustawione "na sztywno wartości".

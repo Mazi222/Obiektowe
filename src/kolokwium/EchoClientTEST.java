@@ -17,7 +17,7 @@ public class EchoClientTEST extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("TicTacToe.fxml"));
-        stage.setTitle("DB");
+        stage.setTitle("Kolko krzyzyk");
         stage.setScene(new Scene(root,600,400));
         stage.show();
     }

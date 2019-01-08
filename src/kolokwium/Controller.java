@@ -25,8 +25,8 @@ public class Controller {
 
     private EchoClient echoClient = new EchoClient();
 
-    short player=0;
-    short count=0;
+    private short player=0;
+    private short count=0;
 
     private void changeValueOfTile(TextField tile)
     {

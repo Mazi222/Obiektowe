@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 
+/*
+
+ */
+
 public class Controller {
 
     @FXML private TextField tile00;
@@ -25,25 +29,46 @@ public class Controller {
 
     private void changeValueOfTile(TextField tile)
     {
-        if(tile.getText()=="") {
-            if (player == 0) {
-                player = 1;
-                tile.setText("X");
-            } else {
-                player = 0;
-                tile.setText("O");
-            }
-            if(++count==9)
-                sendMessageToServer();
+        if (player == 0) {
+            player = 1;
+            tile.setText("X");
+            ++count;
+        } else {
+            player = 0;
+            tile.setText("O");
+            ++count;
+        }
+        if(count==9) {
+            sendMessageToServer();
+            restart();
         }
     }
 
     private void sendMessageToServer()
     {
         //Zawsze takie samo zapytanie aby pokazac że baza danych działa
-        String query ="INSERT INTO players VALUES('"+"player1"+"','"+"1"+"0"+"player2"+"')";
+        String query ="INSERT INTO players VALUES('"+"player1"+"','"+"1"+"','"+"0"+"','"+"player2"+"')";
         echoClient.addPlayerToDataBase(query);
     }
+
+    private void restart()
+    {
+        tile00.setText("");
+        tile01.setText("");
+        tile02.setText("");
+
+        tile10.setText("");
+        tile11.setText("");
+        tile12.setText("");
+
+        tile20.setText("");
+        tile21.setText("");
+        tile22.setText("");
+
+        player=0;
+        count=0;
+    }
+
 
     @FXML
     public void handletile00()

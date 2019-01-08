@@ -14,27 +14,6 @@ public class DataBase {
     {
     }
 
-    public ObservableList<Player> getData(String query){
-
-        connect();
-        statementCreation();
-
-        ObservableList<Player> listaKsiazek = FXCollections.observableArrayList();
-        try {
-            resultSet = statement.executeQuery(query);
-            while(resultSet.next())
-            {
-                listaKsiazek.add(new Player());
-            }
-        }
-        catch (SQLException e) {}
-        finally
-        {
-            closeAll();
-        }
-        return listaKsiazek;
-    }
-
     public void addPlayer(String query)
     {
         connect();
@@ -45,17 +24,7 @@ public class DataBase {
         closeAll();
     }
 
-    public void deletePlayer(String query)
-    {
-        connect();
-        statementCreation();
 
-        try {
-            statement.executeUpdate(query);
-        } catch (SQLException e){}
-
-        closeAll();
-    }
 
     public boolean isConnected()
     {

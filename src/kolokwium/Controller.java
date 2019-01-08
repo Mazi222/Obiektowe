@@ -5,8 +5,9 @@ import javafx.scene.control.TextField;
 
 
 /*
-
- */
+    Ten sam wynik zwracany bez względu na wynik rozgrywki (rozgrywka resetuje się po 9 kliknięciach)
+    zawsze zaczyna 'X'
+*/
 
 public class Controller {
 

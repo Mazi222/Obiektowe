@@ -6,8 +6,11 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
+
+/*
+    Wielowątkowy serwer
+ */
 
 public class EchoServer {
     public static void main(String[] args) throws IOException {
